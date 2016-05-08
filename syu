@@ -1,0 +1,119 @@
+#!/bin/bash
+# syu
+# Copyright © 2011-2016, Chris Warrick.
+# All rights reserved.
+#
+# Redistribution and use in source and binary forms, with or without
+# modification, are permitted provided that the following conditions are
+# met:
+#
+# 1. Redistributions of source code must retain the above copyright
+#    notice, this list of conditions, and the following disclaimer.
+#
+# 2. Redistributions in binary form must reproduce the above copyright
+#    notice, this list of conditions, and the following disclaimer in the
+#    documentation and/or other materials provided with the distribution.
+#
+# 3. Neither the name of the author of this software nor the names of
+#    contributors to this software may be used to endorse or promote
+#    products derived from this software without specific prior written
+#    consent.
+#
+# THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+# "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+# LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+# A PARTICULAR PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT
+# OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+# SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+# LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+# DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+# THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+# (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+# OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+# Configuration:
+NORMAL_USER='kwpolska'
+
+#f(01) syuhelp
+function syuhelp {
+    echo "syu"
+    echo "Copyright © 2011-2016, Chris Warrick."
+    echo "usage: syu [-htlorca]"
+    echo ""
+    echo "default behavior: Perform an update (pacman -Syu + pkgbuilder -Syu)."
+    echo "optional arguments:"
+    echo "  -h, --help      show this message and exit"
+    echo "  -t, --time      update time using NTP and exit"
+    echo "  -o, --optimize  optimize the pacman database and exit"
+    echo "  -l, --lock      unlock pacman database"
+    echo "  -r, --reflect   reflect the mirrors"
+    echo "  -c, --cron      perform a cron-friendly update (NTP + pacman -Sy)"
+    echo "  -a, --noaur     don't use pkgbuilder while updating."
+    echo ""
+    exit
+}
+
+#f(02) syutime
+function syutime {
+    # Doesn’t do anything interesting
+    #ntpd -q
+    #ntpdate pl.pool.ntp.org
+    hwclock -w
+}
+
+#f(03) syunlock
+function syunlock {
+    rm /var/lib/pacman/db.lck
+}
+
+#f(04) syureflect
+    function syureflect {
+    echo "Running reflector."
+    echo -n "Finished elements:"
+    reflector -c Any > /etc/pacman.d/mirrorlist
+    echo -n " Any"
+    reflector -p http -c Germany >> /etc/pacman.d/mirrolist
+    echo -n " Germany"
+    reflector -p http -c United\ States >> /etc/pacman.d/mirrorlist
+    echo -n " US"
+    reflector -l 5 -p http >> /etc/pacman.d/mirrorlist
+    echo -n " latest"
+    reflector -f 5 -p http >> /etc/pacman.d/mirrorlist
+    echo -e "\nReflecting finished. Updating..."
+    pacman -Syyu
+    pkgbuilder -Syyu
+    exit
+}
+
+#f(05) syuoptimize
+function syuoptimize {
+    pacman-optimize
+}
+
+#f(06) syucron
+function syucron {
+    ntpdate pl.pool.ntp.org > /dev/null
+    pacman -Sy > /dev/null
+    exit
+}
+
+cycling='true'
+while [ $cycling == 'true' ]; do
+    case "$1" in
+        "-h" | "--help")        syuhelp    ; EXIT=s ;; #f(01)
+        "-t" | "--time")        syutime    ; EXIT=y ;; #f(02)
+        "-l" | "--lock")        syunlock   ; EXIT=y ;; #f(03)
+        "-o" | "--optimize")    syuoptimize; EXIT=y ;; #f(04)
+        "-r" | "--reflect")     syureflect ; EXIT=n ;; #f(05)
+        "-c" | "--cron")        syucron    ; EXIT=s ;; #f(06)
+        "-a" | "--noaur")       syuaur="n" ; EXIT=n ;; #f(na)
+        "")                     cycling='false'     ;;
+    esac
+    shift
+done
+if [ "$EXIT" == 'y' ]; then exit 0; fi
+
+pacman -Syu
+if [ "$syuaur" != "n" ]; then
+    sudo -u $NORMAL_USER pkgbuilder -Syu
+fi
