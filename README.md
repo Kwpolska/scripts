@@ -6,9 +6,10 @@ A collection of simple utilities and scripts. Formerly known as KRU (Kw’s Rand
 List of scripts
 ---------------
 
-* `syu` — Arch Linux update script (pacman + PKGBUILDer)
-* `git-ftp-bridge.py` — Simple (and unsafe) Git ↔ FTP bridge
 * `auto-unzip.py` — Unzip downloaded `.zip` files automatically
+* `git-ftp-bridge.py` — Simple (and unsafe) Git ↔ FTP bridge
+* `merge-irclogs.py` — Merge IRC logs split over multiple files
+* `syu` — Arch Linux update script (pacman + PKGBUILDer)
 
 Smaller useful snippets may live on [Gist](https://gist.github.com/Kwpolska).
 
