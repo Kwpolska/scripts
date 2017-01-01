@@ -1,6 +1,6 @@
 #!/bin/bash
 # syu
-# Copyright © 2011-2016, Chris Warrick.
+# Copyright © 2011-2017, Chris Warrick.
 # All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
@@ -37,7 +37,7 @@ NORMAL_USER='kwpolska'
 #f(01) syuhelp
 function syuhelp {
     echo "syu"
-    echo "Copyright © 2011-2016, Chris Warrick."
+    echo "Copyright © 2011-2017, Chris Warrick."
     echo "usage: syu [-htlorca]"
     echo ""
     echo "default behavior: Perform an update (pacman -Syu + pkgbuilder -Syu)."
