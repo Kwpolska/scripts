@@ -7,6 +7,7 @@ List of scripts
 ---------------
 
 * `auto-unzip.py` — Unzip downloaded `.zip` files automatically
+* `fix-venvs.sh` — fix virtualenvs after Python update
 * `kwfactoids.py` — WeeChat script for factoids
 * `git-ftp-bridge.py` — Simple (and unsafe) Git ↔ FTP bridge
 * `merge-irclogs.py` — Merge IRC logs split over multiple files
