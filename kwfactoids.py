@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 # WeeChat script for factoids.
 # Copyright © 2017, Chris Warrick.
 # All rights reserved.
