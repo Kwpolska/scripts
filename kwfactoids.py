@@ -8,6 +8,7 @@
 #     var.plugins.python.kwfactoids.path — path to JSON file with factoids
 # Commands:
 #     /factoid [factoid] [nicks]
+#     /f [factoid] [nicks]
 #     /factreload
 
 """WeeChat script for factoids."""
@@ -17,7 +18,7 @@ import json
 import weechat
 SCRIPT_NAME = "kwfactoids"
 FACTOIDS = {}
-weechat.register(SCRIPT_NAME, "Chris Warrick", "0.1.0", "3-clause BSD", "A simple factoids plugin.", "", "")
+weechat.register(SCRIPT_NAME, "Chris Warrick", "0.1.1", "3-clause BSD", "A simple factoids plugin.", "", "")
 script_options = {
     "path": "%h/kwfactoids.json"
 }
@@ -56,7 +57,9 @@ def command_factoid(data, buffer, args):
     else:
         weechat.prnt(weechat.current_buffer(), "%sUnknown factoid: %s" % (weechat.prefix("error"), fname.encode('utf-8')))
         return weechat.WEECHAT_RC_ERROR
-    if len(args) == 2:
+    if len(args) == 2 and ' ' in args[1]:
+        msg = u" ".join((args[1], ftext))
+    elif len(args) == 2:
         msg = u": ".join((args[1], ftext))
     else:
         msg = ftext
@@ -78,6 +81,9 @@ def kwfactoids_completion_cb(data, completion_item, buffer, completion):
 load_factoids()
 
 weechat.hook_command("factoid", "Send a factoid to channel.", "[factoid] [user]",
+                     "factoid is name of factoid, user (optional) is user to direct the factoid at.",
+                     "%(kwfactoidsc) %(nicks)", "command_factoid", "")
+weechat.hook_command("f", "Send a factoid to channel.", "[factoid] [user]",
                      "factoid is name of factoid, user (optional) is user to direct the factoid at.",
                      "%(kwfactoidsc) %(nicks)", "command_factoid", "")
 weechat.hook_command("factreload", "Reload factoids.", "", "", "", "command_factreload", "")
