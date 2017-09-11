@@ -36,5 +36,5 @@ with open('output/factoids.html', 'w', encoding='utf-8') as fh:
     fh.write(template.render(
         factoids=factoids,
         python_version=platform.python_version(),
-        last_update=datetime.datetime.utcnow().isoformat()
+        last_update=datetime.datetime.utcnow().replace(microsecond=0).isoformat() + 'Z',
     ))
