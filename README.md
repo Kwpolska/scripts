@@ -9,6 +9,7 @@ List of scripts
 * `auto-unzip.py` — Unzip downloaded `.zip` files automatically
 * `crossdiff.py` — compare multiple files
 * `fix-venvs.sh` — fix virtualenvs after Python update
+* `factoids_gen.py — generate <https://chriswarrick.com/gen/factoids.html>
 * `kwfactoids.py` — WeeChat script for factoids
 * `git-ftp-bridge.py` — Simple (and unsafe) Git ↔ FTP bridge
 * `merge-irclogs.py` — Merge IRC logs split over multiple files

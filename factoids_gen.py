@@ -35,6 +35,6 @@ with open('factoids_template.html', 'r', encoding='utf-8') as fh:
 with open('output/factoids.html', 'w', encoding='utf-8') as fh:
     fh.write(template.render(
         factoids=factoids,
-        py_version=platform.python_version(),
+        python_version=platform.python_version(),
         last_update=datetime.datetime.utcnow().isoformat()
     ))
