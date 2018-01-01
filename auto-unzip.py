@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # Automatically unzip any .zip files in ~/Downloads to the CWD.
 # Requires watchdog.
-# Copyright © 2016-2017, Chris Warrick.
+# Copyright © 2016-2018, Chris Warrick.
 # All rights reserved.
 # Licensed under the 3-clause BSD license.
 

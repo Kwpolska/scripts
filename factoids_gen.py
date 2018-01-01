@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # Generate https://chriswarrick.com/gen/factoids.html
-# Copyright © 2017, Chris Warrick.
+# Copyright © 2017-2018, Chris Warrick.
 # All rights reserved.
 # Licensed under the 3-clause BSD license.
 
