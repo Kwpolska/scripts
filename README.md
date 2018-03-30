@@ -14,6 +14,7 @@ List of scripts
 * `git-ftp-bridge.py` — Simple (and unsafe) Git ↔ FTP bridge
 * `merge-irclogs.py` — Merge IRC logs split over multiple files
 * `syu` — Arch Linux update script (pacman + PKGBUILDer)
+* `venv-set-opt-link.sh` — make virtualenvs break less by removing minor version reference from links (macOS/Homebrew)
 
 Smaller useful snippets may live on [Gist](https://gist.github.com/Kwpolska).
 
