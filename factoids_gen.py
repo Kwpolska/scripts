@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# Generate https://chriswarrick.com/gen/factoids.html
+# Generate https://chriswarrick.com/pub/factoids.html
 # Copyright © 2017-2018, Chris Warrick.
 # All rights reserved.
 # Licensed under the 3-clause BSD license.
@@ -32,7 +32,7 @@ for f in sorted(raw_data):
 with open('factoids_template.html', 'r', encoding='utf-8') as fh:
     template = Template(fh.read())
 
-with open('output/factoids.html', 'w', encoding='utf-8') as fh:
+with open('/srv/chriswarrick.com/pub/factoids.html', 'w', encoding='utf-8') as fh:
     fh.write(template.render(
         factoids=factoids,
         python_version=platform.python_version(),
