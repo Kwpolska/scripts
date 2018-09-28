@@ -12,9 +12,10 @@ List of scripts
 * `factoids_gen.py` — generate <https://chriswarrick.com/gen/factoids.html>
 * `FromStartswithSubject.pm` — a terrible SpamAssassin plugin that filters one
   particularly annoying form of spam. (ugh, Perl!)
-* `kwfactoids.py` — WeeChat script for factoids
 * `git-ftp-bridge.py` — Simple (and unsafe) Git ↔ FTP bridge
+* `kwfactoids.py` — WeeChat script for factoids
 * `merge-irclogs.py` — Merge IRC logs split over multiple files
+* `pagination.py` — pretty pagination layout provider<Paste>
 * `syu` — Arch Linux update script (pacman + PKGBUILDer)
 * `venv-set-opt-link.sh` — make virtualenvs break less by removing minor version reference from links (macOS/Homebrew)
 
