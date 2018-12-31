@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # Compare multiple files.
-# Copyright © 2017-2018, Chris Warrick.
+# Copyright © 2017-2019, Chris Warrick.
 # All rights reserved.
 # Licensed under the 3-clause BSD license.
 
