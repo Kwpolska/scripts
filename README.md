@@ -8,6 +8,7 @@ List of scripts
 
 * `auto-unzip.py` — Unzip downloaded `.zip` files automatically
 * `crossdiff.py` — compare multiple files
+* `find-pwnage.py` — search for passwords on Pwned Passwords
 * `fix-venvs.sh` — fix virtualenvs after Python update
 * `factoids_gen.py` — generate <https://chriswarrick.com/gen/factoids.html>
 * `FromStartswithSubject.pm` — a terrible SpamAssassin plugin that filters one
