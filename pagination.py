@@ -1,5 +1,5 @@
 # Pretty Pagination
-# Copyright © 2019, Chris Warrick.
+# Copyright © 2019-2020, Chris Warrick.
 # All rights reserved.
 # License: 3-clause BSD
 

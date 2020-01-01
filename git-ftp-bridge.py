@@ -3,7 +3,7 @@
 # Takes incoming HTTP requests (from eg. GitHub or BitBucket webhooks), pulls a git repo, and sends it through FTP.
 # Requires ncftp.
 # I know shell=True is unsafe. This was thrown together in five minutes for a private project, and it runs in tmux. I don’t care.
-# Copyright © 2016-2019, Chris Warrick.
+# Copyright © 2016-2020, Chris Warrick.
 # Licensed under the simplified 2-clause BSD license.
 
 """Simple and unsafe Git ↔ FTP bridge. Requires ncftp."""
