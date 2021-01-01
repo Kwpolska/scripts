@@ -2,7 +2,7 @@
 # Find password pwnage. Uses Troy Hunt’s Pwned Passwords service.
 # Input format: CSV file with 'Title' and 'Password' columns.
 # (Perfect for KeePassXC exports, for example)
-# Copyright © 2019-2020, Chris Warrick. All rights reserved.
+# Copyright © 2019-2021, Chris Warrick. All rights reserved.
 # License: 3-clause BSD.
 import csv
 import hashlib

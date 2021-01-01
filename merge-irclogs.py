@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # Merge IRC logs from channel.MM-DD to channel.YYYY-MM format.
 # (One-off script; requires modification to work for you)
-# Copyright © 2016-2020, Chris Warrick.
+# Copyright © 2016-2021, Chris Warrick.
 # All rights reserved.
 # Licensed under the simplified 2-clause BSD license.
 

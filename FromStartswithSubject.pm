@@ -1,4 +1,4 @@
-# Copyright © 2018-2020, Chris Warrick. All rights reserved.
+# Copyright © 2018-2021, Chris Warrick. All rights reserved.
 # License: 2-clause BSD
 package FromStartswithSubject;
 use Mail::SpamAssassin::Plugin;
