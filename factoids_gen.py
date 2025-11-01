@@ -36,5 +36,5 @@ with open('/srv/chriswarrick.com/pub/factoids.html', 'w', encoding='utf-8') as f
     fh.write(template.render(
         factoids=factoids,
         python_version=platform.python_version(),
-        last_update=datetime.datetime.utcnow().replace(microsecond=0).isoformat() + 'Z',
+        last_update=datetime.datetime.now(datetime.UTC).replace(microsecond=0).isoformat() + 'Z',
     ))

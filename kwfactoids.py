@@ -50,12 +50,12 @@ def config_cb(data, option, value):
 
 def command_factoid(data, buffer, args):
     """Send a factoid to channel."""
-    args = args.decode('utf-8').split(' ', 1)
+    args = args.split(' ', 1)
     fname = args[0]
     if fname in FACTOIDS:
         ftext = FACTOIDS[fname]
     else:
-        weechat.prnt(weechat.current_buffer(), "%sUnknown factoid: %s" % (weechat.prefix("error"), fname.encode('utf-8')))
+        weechat.prnt(weechat.current_buffer(), "%sUnknown factoid: %s" % (weechat.prefix("error"), fname))
         return weechat.WEECHAT_RC_ERROR
     if len(args) == 2 and ' ' in args[1]:
         msg = u" ".join((args[1], ftext))
@@ -63,7 +63,7 @@ def command_factoid(data, buffer, args):
         msg = u": ".join((args[1], ftext))
     else:
         msg = ftext
-    weechat.command(buffer, msg.encode("utf-8"))
+    weechat.command(buffer, msg)
     return weechat.WEECHAT_RC_OK
 
 
